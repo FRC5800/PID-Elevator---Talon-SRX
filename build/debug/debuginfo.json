@@ -1,0 +1,16 @@
+[
+  {
+    "artifact": "frcJava (in project FRC5800 - Workshop 31.08)",
+    "target": "roborio",
+    "debugfile": "frcJava_roborio.debugconfig",
+    "project": "FRC5800 - Workshop 31.08",
+    "language": "java"
+  },
+  {
+    "artifact": "frcJava (in project FRC5800-2019-Off-Season-RS-Off_Season_RS)",
+    "target": "roborio",
+    "debugfile": "frcJava_roborio.debugconfig",
+    "project": "FRC5800-2019-Off-Season-RS-Off_Season_RS",
+    "language": "java"
+  }
+]
