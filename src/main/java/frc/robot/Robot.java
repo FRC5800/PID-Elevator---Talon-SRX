@@ -5,13 +5,11 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.subsystems.SubsystemDriver;
 import frc.robot.subsystems.SubsystemJoystick;
 import frc.robot.subsystems.Lift;
 
 
 public class Robot extends TimedRobot {
-  public static SubsystemDriver driver = new SubsystemDriver();
   public static SubsystemJoystick joystick = new SubsystemJoystick();
   public static Lift liftPID = new Lift();
   public static OI m_oi;
