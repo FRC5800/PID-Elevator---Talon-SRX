@@ -8,14 +8,18 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 import frc.robot.subsystems.SubsystemJoystick;
 
 public class LiftMove extends Command {
   double speed;
-  public LiftMove() {
+  public LiftMove(double sp) {
+    
+    this.speed = sp;
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
+    requires(Robot.liftPID);
   }
 
   // Called just before this Command runs the first time
@@ -26,14 +30,19 @@ public class LiftMove extends Command {
 
   // Called repeatedly when this Command is scheduled to run
   @Override
-  protected void execute() {  
-    this.speed = SubsystemJoystick.axis_d_LY.get();
-    if(Robot.liftPID.isTopLimitActive()){
-        Robot.liftPID.stop();
-    } else {
-      Robot.liftPID.liftManche(this.speed);
+  protected void execute() {
+    if(Robot.liftPID.isLimitActive()){
+       if (this.speed >= 0){
+        Robot.liftPID.liftManche(this.speed);
+       } else {
+        Robot.liftPID.liftManche(0);
+       }
+  } else { 
+    Robot.liftPID.liftManche(this.speed);
   }
-}
+
+  SmartDashboard.putBoolean("Fim de curso", Robot.liftPID.isLimitActive());
+  }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
@@ -44,11 +53,15 @@ public class LiftMove extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    
+    Robot.liftPID.liftManche(0);
+
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    Robot.liftPID.liftManche(0);
   }
 }
