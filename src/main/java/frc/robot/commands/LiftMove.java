@@ -27,14 +27,16 @@ public class LiftMove extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {  
-    this.speed = SubsystemJoystick.axis_d_LY.get();
-    if(Robot.liftPID.isTopLimitActive()){
-        Robot.liftPID.stop();
-    } else {
-      Robot.liftPID.liftManche(this.speed);
-  }
+    if(Robot.liftPID.isLimitActive()){
+      if (this.speed >= 0){
+       Robot.liftPID.liftManche(this.speed);
+      } else {
+       Robot.liftPID.liftManche(0);
+      }
+ } else { 
+   Robot.liftPID.liftManche(this.speed);
 }
-
+  }
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
