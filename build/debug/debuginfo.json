@@ -12,5 +12,12 @@
     "debugfile": "frcJava_roborio.debugconfig",
     "project": "FRC5800-2019-Off-Season-RS-Off_Season_RS",
     "language": "java"
+  },
+  {
+    "artifact": "frcJava (in project Pid Code - FRC5800)",
+    "target": "roborio",
+    "debugfile": "frcJava_roborio.debugconfig",
+    "project": "Pid Code - FRC5800",
+    "language": "java"
   }
 ]

@@ -14,21 +14,28 @@ public class LiftTest extends Command {
   public LiftTest() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
+    requires(Robot.liftPID);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    
+    Robot.liftPID.resetEncoder();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if(Robot.liftPID.isTopLimitActive()){
+   /* if(Robot.liftPID.isLimitActive()){
       Robot.liftPID.stop();
-    }else{
-      Robot.liftPID.movePosition(300);
-    }
+      Robot.liftPID.resetEncoder();
+    } else {
+      Robot.liftPID.movePosition(100);
+    }*/
+
+    
+    Robot.liftPID.movePosition(100);
   }
 
   // Make this return true when this Command no longer needs to run execute()

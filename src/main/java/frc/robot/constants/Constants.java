@@ -46,7 +46,9 @@ public class Constants {
      * Gains(kp, ki, kd, kf, izone, peak output);
      */
 	
-	public static final Gains kGains = new Gains((0.7*1023)/(4096*1), ((0.7*1023)/(4096*1))/10000, ((0.7*1023)/(4096*1))*90, 0, 0, 1.0);
+	//public static final Gains kGains = new Gains((0.7*1023)/(4096*1), ((0.7*1023)/(4096*1))/10000, ((0.7*1023)/(4096*1))*90, 0, 0, 1.0);
+
+	public static final Gains kGains = new Gains((0.5*1023)/(4096*1), ((0.5*1023)/(4096*1))/10, ((0.5*1023)/(4096*1))*10, 0, 0, 1.0);
 	
 
 } //((0.5*1023)/364)/3000

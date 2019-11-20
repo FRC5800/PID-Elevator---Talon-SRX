@@ -13,7 +13,8 @@ import frc.robot.subsystems.SubsystemJoystick;
 
 public class LiftMove extends Command {
   double speed;
-  public LiftMove() {
+  public LiftMove(double sp) {
+    this.speed = sp;
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -46,11 +47,14 @@ public class LiftMove extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.liftPID.liftManche(0);
+    
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    Robot.liftPID.liftManche(0);
   }
 }

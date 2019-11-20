@@ -21,16 +21,16 @@ import frc.robot.constants.Constants;
  */
 public class Lift extends Subsystem {
 
-  private TalonSRX elevatorMaster = new TalonSRX(1);
-  private TalonSRX elevatorSlave = new TalonSRX(2);
+  private TalonSRX elevatorMaster = new TalonSRX(0);
+  private TalonSRX elevatorSlave = new TalonSRX(1);
   private DigitalInput limitSwtichUp = new DigitalInput(4);
-  private DigitalInput limitSwtichDown = new DigitalInput(3); 
+  private DigitalInput limitSwtichDown = new DigitalInput(9); 
 
   public Lift(){
     this.elevatorMaster.setNeutralMode(NeutralMode.Brake);
     this.elevatorSlave.setNeutralMode(NeutralMode.Brake);
     this.elevatorMaster.setInverted(true);
-		this.elevatorSlave.setInverted(false);
+		this.elevatorSlave.setInverted(true);
 		this.liftInit();
 		resetEncoder();
   }
@@ -59,6 +59,7 @@ public class Lift extends Subsystem {
 	public void stop(){
 		if(isLimitActive()){
 			elevatorMaster.setSelectedSensorPosition(0, 0, 80);
+	
 		}
 	}
 
