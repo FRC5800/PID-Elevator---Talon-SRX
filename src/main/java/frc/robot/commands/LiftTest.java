@@ -9,9 +9,12 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.constants.Gains;
 
 public class LiftTest extends Command {
-  public LiftTest() {
+  double dt;
+  public LiftTest(double distance) {
+    this.dt = distance;
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.liftPID);
@@ -21,22 +24,18 @@ public class LiftTest extends Command {
   @Override
   protected void initialize() {
     
-    Robot.liftPID.resetEncoder();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-   /* if(Robot.liftPID.isLimitActive()){
-      Robot.liftPID.stop();
+    if(Robot.liftPID.isLimitActive()){
+      Robot.liftPID.movePosition(0);
       Robot.liftPID.resetEncoder();
-    } else {
-      Robot.liftPID.movePosition(100);
-    }*/
-
-    
-    Robot.liftPID.movePosition(100);
+    }
+      Robot.liftPID.movePosition(this.dt);
   }
+  
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
@@ -55,3 +54,4 @@ public class LiftTest extends Command {
   protected void interrupted() {
   }
 }
+

@@ -108,6 +108,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
+    SmartDashboard.putNumber("Encoder Pulses", Robot.liftPID.getPulses());
   }
 
   /**

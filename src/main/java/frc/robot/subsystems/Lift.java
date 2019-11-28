@@ -53,15 +53,17 @@ public class Lift extends Subsystem {
 		return this.limitSwtichDown.get();
 	}
 
+	public int getPulses(){
+		return this.elevatorMaster.getSelectedSensorPosition();
+	}
+
 	public void resetEncoder(){
   elevatorMaster.setSelectedSensorPosition(0, 0, 30);}
 
 	public void stop(){
-		if(isLimitActive()){
 			elevatorMaster.setSelectedSensorPosition(0, 0, 80);
 	
 		}
-	}
 
   public void liftInit(){
 		elevatorMaster.configFactoryDefault();
